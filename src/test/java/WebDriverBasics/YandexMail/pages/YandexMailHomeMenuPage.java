@@ -1,13 +1,12 @@
 package WebDriverBasics.YandexMail.pages;
 
-import WebDriverBasics.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class YandexMailHomeMenuPage extends AbstractPage {
+public class YandexMailHomeMenuPage extends YandexMailHomeMessageArea {
 
     public YandexMailHomeMenuPage(WebDriver driver) {
         super(driver);

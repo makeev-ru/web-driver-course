@@ -36,12 +36,11 @@ public class YandexMailTests {
 
     @Test(description = "Assert, that the login is successful")
     public void loginAndVerify() {
-        YandexMailLoginForm loginPage = new YandexMailLoginForm(driver);
-        loginPage.open();
+        YandexMailHomeMenuPage homePage = new YandexMailLoginForm(driver).
+                open().
+                loginToYandexMail(USERNAME, PASSWORD);
 
-        YandexMailHomeMenuPage homePage = loginPage.loginToYandexMail(USERNAME, PASSWORD);
-
-        Assert.assertEquals(USERNAME, homePage.getUsernameLoginTitle());
+        Assert.assertEquals(homePage.getUsernameLoginTitle(), USERNAME);
     }
 
     @Test(description = "Verify the draft content (addressee/subject/body)")
@@ -49,27 +48,24 @@ public class YandexMailTests {
         String subject = generateString(5);
         String body = generateString(20);
 
-        YandexMailHomeMenuPage loginPage = new YandexMailLoginForm(driver).
+        YandexMailNewMessageModal newMessageModal = new YandexMailLoginForm(driver).
                 open().
                 loginToYandexMail(USERNAME, PASSWORD).
                 clickComposeButton().
                 fillNewMessageForm(TO, subject, body).
                 clickCloseIcon().
                 clickDraftsLink().
-                clickUpdateButton();
-
-        YandexMailNewMessageModal newMessageModal = new YandexMailHomeMessageArea(driver).
+                clickUpdateButton().
                 clickMessageLinkBySubject(subject);
 
-        List<String> actualMessageContent = newMessageModal.getMessageContent_to_subject_body();
+        List<String> actualMessageContentList = newMessageModal.getMessageContent_to_subject_body();
 
-        List<String> expectedMessageContent = new ArrayList<>();
-        expectedMessageContent.add(TO);
-        expectedMessageContent.add(subject);
-        expectedMessageContent.add(body);
+        List<String> expectedMessageContentList = new ArrayList<>();
+        expectedMessageContentList.add(TO);
+        expectedMessageContentList.add(subject);
+        expectedMessageContentList.add(body);
 
-        Assert.assertEquals(actualMessageContent, expectedMessageContent, "Wrong content");
-
+        Assert.assertEquals(actualMessageContentList, expectedMessageContentList, "Content doesn't match");
     }
 
     @Test(description = "Verify, that the mail disappeared from ‘Drafts’ folder")
@@ -77,19 +73,14 @@ public class YandexMailTests {
         String subject = generateString(6);
         String body = generateString(20);
 
-        YandexMailLoginForm loginPage = new YandexMailLoginForm(driver);
-
-        loginPage.
+        YandexMailHomeMessageArea messageArea = new YandexMailLoginForm(driver).
                 open().
                 loginToYandexMail(USERNAME, PASSWORD).
                 clickComposeButton().
                 fillNewMessageForm(TO, subject, body).
                 clickCloseIcon().
                 clickDraftsLink().
-                clickUpdateButton();
-
-        YandexMailHomeMessageArea messageArea = new YandexMailHomeMessageArea(driver);
-        messageArea.
+                clickUpdateButton().
                 clickMessageLinkBySubject(subject).
                 clickSendButton().
                 clickBackToInboxButton().
@@ -98,7 +89,6 @@ public class YandexMailTests {
         Assert.assertEquals(driver.findElements(messageArea.
                         getMessageLinkBySubject(subject)).size(), 0,
                 "The message is still in Drafts");
-
     }
 
     @Test(description = "Verify, that the mail is in ‘Sent’ folder")
@@ -106,20 +96,14 @@ public class YandexMailTests {
         String subject = generateString(7);
         String body = generateString(20);
 
-        YandexMailLoginForm loginPage = new YandexMailLoginForm(driver);
-
-        loginPage.
+        YandexMailHomeMessageArea messageArea = new YandexMailLoginForm(driver).
                 open().
                 loginToYandexMail(USERNAME, PASSWORD).
                 clickComposeButton().
                 fillNewMessageForm(TO, subject, body).
                 clickCloseIcon().
                 clickDraftsLink().
-                clickUpdateButton();
-
-        YandexMailHomeMessageArea messageArea = new YandexMailHomeMessageArea(driver);
-
-        messageArea.
+                clickUpdateButton().
                 clickMessageLinkBySubject(subject).
                 clickSendButton().
                 clickBackToInboxButton().
@@ -132,7 +116,6 @@ public class YandexMailTests {
 
     @Test(description = "Log off and verify it")
     public void logoffAndVerify() {
-
         YandexMailHomeMenuPage homePage = new YandexMailLoginForm(driver).
                 open().
                 loginToYandexMail(USERNAME, PASSWORD).
@@ -147,6 +130,4 @@ public class YandexMailTests {
     protected String generateString(int length) {
         return RandomStringUtils.randomAlphanumeric(length);
     }
-
-
 }
