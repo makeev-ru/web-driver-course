@@ -1,7 +1,7 @@
-package WebDriverBasics.Pastebin;
+package webDriverBasics.pastebin;
 
-import WebDriverBasics.Pastebin.pages.PastebinHomePage;
-import WebDriverBasics.Pastebin.pages.PastebinResultsPage;
+import webDriverBasics.pastebin.pages.PastebinHomePage;
+import webDriverBasics.pastebin.pages.PastebinResultsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;

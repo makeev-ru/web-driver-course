@@ -3,7 +3,7 @@
 <suite name="Testing Yandex Mail">
     <test name="Test">
         <classes>
-            <class name="WebDriverBasics.YandexMail.YandexMailTests"/>
+            <class name="webDriverBasics.yandexMail.YandexMailTests"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

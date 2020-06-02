@@ -1,6 +1,6 @@
-package WebDriverBasics.Pastebin.pages;
+package webDriverBasics.pastebin.pages;
 
-import WebDriverBasics.AbstractPage;
+import webDriverBasics.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

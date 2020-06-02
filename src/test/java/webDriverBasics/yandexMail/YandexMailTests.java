@@ -1,9 +1,9 @@
-package WebDriverBasics.YandexMail;
+package webDriverBasics.yandexMail;
 
-import WebDriverBasics.YandexMail.pages.YandexMailHomeMenuPage;
-import WebDriverBasics.YandexMail.pages.YandexMailHomeMessageArea;
-import WebDriverBasics.YandexMail.pages.YandexMailLoginForm;
-import WebDriverBasics.YandexMail.pages.YandexMailNewMessageModal;
+import webDriverBasics.yandexMail.pages.YandexMailHomeMenuPage;
+import webDriverBasics.yandexMail.pages.YandexMailHomeMessageArea;
+import webDriverBasics.yandexMail.pages.YandexMailLoginForm;
+import webDriverBasics.yandexMail.pages.YandexMailNewMessageModal;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

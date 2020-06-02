@@ -1,4 +1,4 @@
-package WebDriverBasics.YandexMail.pages;
+package webDriverBasics.yandexMail.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
