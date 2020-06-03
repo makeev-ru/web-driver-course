@@ -17,10 +17,10 @@ import java.util.List;
 
 public class YandexMailTests {
     private static WebDriver driver;
-    private static final String USERNAME = "testuser225";
-    private static final String PASSWORD = "test_user225";
+    private static final String USERNAME = "";
+    private static final String PASSWORD = "";
 
-    private static final String TO = "testuser225@yandex.ru";
+    private static final String TO = "";
 
     @BeforeMethod
     public void setUp() {
