@@ -5,13 +5,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.AbstractPage;
+import utils.DoublePriceRegexConverter;
 
 public class GoogleCloudCalculatorPage extends AbstractPage {
 
-    private By devsiteIframe = By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe");
+    protected By devsiteIframe = By.xpath("//*[@id='cloud-site']/devsite-iframe/iframe");
 
     @FindBy(xpath = "//iframe[@id='myFrame']")
-    private WebElement myFrame;
+    protected WebElement myFrame;
 
     @FindBy(xpath = "//md-tab-item/div[@title='Compute Engine']")
     private WebElement computeEngineButton;
@@ -43,10 +44,10 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//md-checkbox[@aria-label='Add GPUs']")
     private WebElement addGPUsCheckbox;
 
-    @FindBy(xpath = "//*[@id='select_value_label_332']")
+    @FindBy(xpath = "//md-select[@placeholder='Number of GPUs']/md-select-value")
     private WebElement numberOfGPUsDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_339']")
+    @FindBy(xpath = "//*[@id='select_option_342']")
     private WebElement oneNumberOfGPUsOption;
 
     @FindBy(xpath = "//*[@id='select_value_label_333']")
@@ -73,11 +74,17 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='select_option_90']")
     private WebElement commitedUsageOneYearOption;
 
-    @FindBy(xpath = "//*[@id='email_quote']")
+    @FindBy(xpath = "//button[@ng-click='cloudCartCtrl.showEmailForm();']")
     private WebElement emailEstimateButton;
 
     @FindBy(xpath = "//form[@name='ComputeEngineForm']/div/button[@class='md-raised md-primary cpc-button md-button md-ink-ripple']")
     private WebElement addToEstimateButton;
+
+    @FindBy(xpath = "//*[@aria-label='Email Estiamte']/form")
+    private WebElement emailForm;
+
+    @FindBy(xpath = "//md-card-content//h2/b")
+    private WebElement totalEstimatedCost;
 
 
     public GoogleCloudCalculatorPage clickComputeEngineButton() {
@@ -205,5 +212,20 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
         return new GoogleCloudCalculatorPage();
     }
 
+    public GoogleCloudEmailEstimateForm clickEmailEstimateButton() {
+
+        waitForElementsVisible(emailEstimateButton);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", emailEstimateButton);
+        waitForElementsVisible(emailForm);
+        return new GoogleCloudEmailEstimateForm();
+    }
+
+    public double getTotalEstimatedCostFromCalculator() {
+        waitForElementsVisible(totalEstimatedCost);
+
+        return DoublePriceRegexConverter.
+                getWebElementTextAndFindDoublePriceByRegex(totalEstimatedCost);
+    }
 
 }

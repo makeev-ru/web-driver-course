@@ -33,6 +33,11 @@ public class AbstractPage {
                 .until(ExpectedConditions.visibilityOf((element)));
     }
 
+    protected void waitForElementsVisible(WebElement element, int seconds) {
+        new WebDriverWait(driver, Duration.ofSeconds(seconds))
+                .until(ExpectedConditions.visibilityOf((element)));
+    }
+
     protected void waitForElementsPresent(By locator) {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated((locator)));

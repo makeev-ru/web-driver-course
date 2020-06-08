@@ -1,16 +1,16 @@
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.googleCloud.EmailGeneratorPage;
+import pages.googleCloud.GoogleCloudCalculatorPage;
 import pages.googleCloud.GoogleCloudHomePage;
-import utils.WebDriverSingleton;
 
 public class GoogleCloudTests {
-    private static WebDriver driver;
 
     @Test
     public void hardcoreScenario() {
-        GoogleCloudHomePage homePage = new GoogleCloudHomePage();
-        homePage.
+        EmailGeneratorPage emailGeneratorPage = new EmailGeneratorPage();
+
+        GoogleCloudCalculatorPage homePage = new GoogleCloudHomePage().
                 open().
                 clickBannerOKButton().
                 clickSeeAllProductsButton().
@@ -28,11 +28,19 @@ public class GoogleCloudTests {
                 selectLocalSSDType().
                 selectDatacenterLocation().
                 selectCommitedUsage().
-                clickAddToEstimateButton();
+                clickAddToEstimateButton().
+                clickEmailEstimateButton().
+                fillEmailInput(emailGeneratorPage.generateEmail()).
+                clickSendEmailButton();
+
+        double priceFromCalculator = homePage.getTotalEstimatedCostFromCalculator();
+        double priceFromEmail = emailGeneratorPage.getTotalEstimatedCostFromEmail();
+
+        Assert.assertEquals(priceFromCalculator, priceFromEmail,"Prices are not equal");
     }
 
-    @AfterClass(description = "Close browser")
-    public void kill() {
-        WebDriverSingleton.kill();
-    }
+//    @AfterClass(description = "Close browser")
+//    public void kill() {
+//        WebDriverSingleton.kill();
+//    }
 }
