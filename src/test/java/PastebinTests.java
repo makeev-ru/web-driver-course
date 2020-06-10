@@ -5,7 +5,6 @@ import pages.pastebin.PastebinHomePage;
 import pages.pastebin.PastebinResultsPage;
 
 public class PastebinTests {
-    private static WebDriver driver;
     private static final String PASTE_CODE =
             "git config --global user.name  \"New Sheriff in Town\"\n" +
                     "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +

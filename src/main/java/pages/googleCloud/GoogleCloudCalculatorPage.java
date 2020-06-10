@@ -26,20 +26,20 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='select_container_71']")
     private WebElement operatingSystemDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_60']")
-    private WebElement operatingSystemFreeDebianItem;
+    @FindBy(xpath = "//div[contains(text(), 'Free: Debian')]/ancestor::md-option")
+    private WebElement operatingSystemFreeDebianItem; //changed
 
     @FindBy(xpath = "//*[@id='select_value_label_52']")
     private WebElement machineClassDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_72']")
-    private WebElement machineClassRegularItem;
+    @FindBy(xpath = "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value='regular']")
+    private WebElement machineClassRegularItem; //changed
 
     @FindBy(xpath = "//*[@id='select_value_label_55']")
     private WebElement machineTypeDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_212']")
-    private WebElement machineTypeN1Standard8;
+    @FindBy(xpath = "//*[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']")
+    private WebElement machineTypeN1Standard8; //changed
 
     @FindBy(xpath = "//md-checkbox[@aria-label='Add GPUs']")
     private WebElement addGPUsCheckbox;
@@ -53,13 +53,13 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='select_value_label_333']")
     private WebElement typeGPUsDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_346']")
+    @FindBy(xpath = "//md-option[@value='NVIDIA_TESLA_V100']")
     private WebElement nvidiaV100TypeGPUsOption;
 
-    @FindBy(xpath = "//*[@id='select_value_label_169']")
+    @FindBy(xpath = "//md-select[@placeholder='Local SSD']")
     private WebElement localSSDDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_233']")
+    @FindBy(xpath = "//div[contains(text(), '2x375 GB')]/ancestor::md-option")
     private WebElement localSSDD2x375Option;
 
     @FindBy(xpath = "//*[@id='select_value_label_56']")

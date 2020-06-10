@@ -9,11 +9,12 @@ public class DoublePriceRegexConverter {
     public static double getWebElementTextAndFindDoublePriceByRegex(WebElement webElement) {
 
         String line = webElement.getText();
-        String regex = "\\d+\\.\\d{2}";
+        String regex = "\\d+(?:[.,]\\d+)*(?:[.,]\\d{2})";
         Pattern regexp = Pattern.compile(regex);
         Matcher match = regexp.matcher(line);
         boolean isFound = match.find();
+        String stringPrice = match.group();
 
-        return Double.parseDouble(match.group());
+        return Double.parseDouble(stringPrice.replace(",", ""));
     }
 }

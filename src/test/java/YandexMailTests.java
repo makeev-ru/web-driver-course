@@ -1,10 +1,6 @@
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.yandexMail.YandexMailHomeMenuPage;
 import pages.yandexMail.YandexMailHomeMessageArea;
@@ -18,7 +14,6 @@ import java.util.List;
 import static org.testng.Assert.assertThrows;
 
 public class YandexMailTests {
-    private static WebDriver driver;
     private static final String USERNAME = System.getenv("YANDEX_USERNAME");
     private static final String PASSWORD = System.getenv("YANDEX_PASSWORD");
 

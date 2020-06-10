@@ -1,5 +1,6 @@
 package utils;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -19,7 +20,7 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver init() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe"); // do not forget to add chromedriver.exe file to src/main/resources/
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
 //        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.chrome());
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
