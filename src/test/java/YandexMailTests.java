@@ -14,8 +14,10 @@ import java.util.List;
 import static org.testng.Assert.assertThrows;
 
 public class YandexMailTests {
-    private static final String USERNAME = System.getenv("YANDEX_USERNAME");
-    private static final String PASSWORD = System.getenv("YANDEX_PASSWORD");
+//    private static final String USERNAME = System.getenv("YANDEX_USERNAME");
+    private static final String USERNAME = "YANDEX_USERNAME";
+//    private static final String PASSWORD = System.getenv("YANDEX_PASSWORD");
+    private static final String PASSWORD = "YANDEX_PASSWORD";
 
     private static final String SEND_TO = USERNAME + "@ya.ru";
 
