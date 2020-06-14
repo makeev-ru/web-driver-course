@@ -1,8 +1,10 @@
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pages.googleCloud.EmailGeneratorPage;
 import pages.googleCloud.GoogleCloudCalculatorPage;
 import pages.googleCloud.GoogleCloudHomePage;
+import utils.WebDriverSingleton;
 
 public class GoogleCloudTests {
 
@@ -39,8 +41,8 @@ public class GoogleCloudTests {
         Assert.assertEquals(priceFromCalculator, priceFromEmail,"Prices are not equal");
     }
 
-//    @AfterClass(description = "Close browser")
-//    public void kill() {
-//        WebDriverSingleton.kill();
-//    }
+    @AfterClass(description = "Close browser")
+    public void kill() {
+        WebDriverSingleton.kill();
+    }
 }
