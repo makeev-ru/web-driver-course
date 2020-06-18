@@ -1,5 +1,5 @@
 os: windows
-language: java
+language: shell
 addons:
   chrome: stable
 script: mvn -Dsurefire.suiteXmlFiles=/src/test/resources/testng.xml clean test
