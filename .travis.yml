@@ -1,14 +1,10 @@
-#os: windows
-#language: shell
-#addons:
-#  chrome: stable
-#script: mvn -Dsurefire.suiteXmlFiles=/src/test/resources/testng.xml clean test
-
 sudo: required
 dist: trusty
+os: windows
 language: java
 jdk:
   - oraclejdk8
-addons:
-  firefox: "latest"
+before_script:
+  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 script: mvn -Dsurefire.suiteXmlFiles=/src/test/resources/testng.xml clean test
+

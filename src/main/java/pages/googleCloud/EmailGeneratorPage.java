@@ -15,7 +15,7 @@ public class EmailGeneratorPage extends AbstractPage {
     @FindBy(xpath = "//button[@class='btn-rds icon-btn bg-theme click-to-copy copyIconGreenBtn']")
     private WebElement copyButton;
 
-    @FindBy(xpath = "//a[@class='viewLink title-subject' and text()='Google Cloud Platform Price Estimate']")
+    @FindBy(xpath = "//a[text()='Google Cloud Platform Price Estimate']")
     private WebElement messageFromGoogleCloudLink;
 
     @FindBy(xpath = "//*[@id='mobilepadding']/td/h2")
@@ -37,7 +37,9 @@ public class EmailGeneratorPage extends AbstractPage {
     public double getTotalEstimatedCostFromEmail() {
         switchToTab(1);
 
-        waitForElementsClickable(messageFromGoogleCloudLink);
+        waitForElementsClickable(messageFromGoogleCloudLink, 60);
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView()", messageFromGoogleCloudLink);
         messageFromGoogleCloudLink.click();
 
         waitForElementsVisible(totalEstimatedCost);

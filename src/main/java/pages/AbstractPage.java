@@ -18,6 +18,11 @@ public class AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
+    protected void waitForElementsClickable(WebElement element, int seconds) {
+        new WebDriverWait(driver, Duration.ofSeconds(seconds))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     protected void waitForElementsClickable(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(element));

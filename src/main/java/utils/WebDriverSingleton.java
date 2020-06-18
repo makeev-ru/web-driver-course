@@ -10,6 +10,8 @@ import java.net.URL;
 
 public class WebDriverSingleton {
     private static WebDriver driver;
+
+
     private static final String SAUCE_USERNAME = System.getenv("SAUCE_USERNAME");
     private static final String SAUCE_ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
     private static final String SAUCE_DC = "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
