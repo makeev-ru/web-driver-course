@@ -5,8 +5,8 @@ before_install:
 script: mvn clean test
 addons:
   sauce_connect:
-    username: $SAUCELABS_USERNAME
-    access_key: $SAUCELABS_ACCESS_KEY
+    username: $SAUCE_USERNAME
+    access_key: $SAUCE_ACCESS_KEY
 
 
 
