@@ -1,6 +1,5 @@
 language: java
-jdk:
-  - oraclejdk8
+jdk: openjdk8
 before_install:
   - export | grep SAUCE_
 script: mvn -Dsurefire.suiteXmlFiles=/src/test/resources/testng.xml clean test
