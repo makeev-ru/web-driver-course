@@ -5,7 +5,7 @@ services:
 addons:
   sauce_connect:
     username: $SAUCELABS_USERNAME
-    access_key: $SAUCELABS_ACCESSKEY
+    access_key: $SAUCELABS_ACCESS_KEY
 install: true
 #script: mvn -Dsurefire.suiteXmlFiles=/src/test/resources/testng.xml clean test
 
