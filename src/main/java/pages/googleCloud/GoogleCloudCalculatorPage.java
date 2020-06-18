@@ -217,7 +217,6 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
         waitForElementsVisible(emailEstimateButton);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", emailEstimateButton);
-        waitForElementsVisible(emailForm);
         return new GoogleCloudEmailEstimateForm();
     }
 

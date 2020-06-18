@@ -12,7 +12,7 @@ public class Screenshoter {
     private static final String SCREENSHOTS_NAME_TPL = "screenshots/scr";
 
     public static void takeScreenshot() {
-        WebDriver driver = WebDriverSingleton.getWebDriverInstance();
+        WebDriver driver = WebDriverSingleton.getWebDriver();
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             String screenshotName = SCREENSHOTS_NAME_TPL + System.nanoTime();

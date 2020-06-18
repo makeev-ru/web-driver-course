@@ -1,6 +1,7 @@
 package pages.googleCloud;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -12,11 +13,14 @@ public class GoogleCloudEmailEstimateForm extends GoogleCloudCalculatorPage {
     @FindBy(xpath = "//button[@aria-label='Send Email']")
     private WebElement sendEmailButton;
 
-    public GoogleCloudEmailEstimateForm fillEmailInput(String email) {
-        driver.switchTo().frame(driver.findElement(devsiteIframe));
-        driver.switchTo().frame(myFrame);
+    public GoogleCloudEmailEstimateForm fillEmailInput(EmailGeneratorPage emailGeneratorPage) {
 
-        emailInput.sendKeys(email);
+        driver.switchTo().frame(driver.findElement(devsiteIframe)).switchTo().frame(myFrame);
+
+        waitForElementsClickable(emailInput);
+        emailInput.click();
+        emailInput.sendKeys(Keys.LEFT_CONTROL + "v");
+
         return new GoogleCloudEmailEstimateForm();
     }
 

@@ -14,7 +14,7 @@ public class AbstractPage {
     protected WebDriver driver;
 
     protected AbstractPage() {
-        this.driver = WebDriverSingleton.getWebDriverInstance();
+        this.driver = WebDriverSingleton.getWebDriver();
         PageFactory.initElements(driver, this);
     }
 

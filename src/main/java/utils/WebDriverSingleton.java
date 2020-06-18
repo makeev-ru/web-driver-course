@@ -1,43 +1,48 @@
 package utils;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class WebDriverSingleton {
-    private static WebDriver instance;
+    private static WebDriver driver;
+    private static final String SAUCE_USERNAME = System.getenv("SAUCE_USERNAME");
+    private static final String SAUCE_ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
+    private static final String SAUCE_DC = "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
 
     private WebDriverSingleton() {
     }
 
-    public static WebDriver getWebDriverInstance() {
-        if (instance != null) {
-            return instance;
-        }
-        return instance = init();
-    }
+    public static WebDriver getWebDriver() {
 
-    private static WebDriver init() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-//        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.chrome());
-        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        if (null == driver) {
+//            WebDriverManager.chromedriver().setup();
+//            driver = new ChromeDriver();
+//            driver.manage().window().maximize();
+
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
+            capabilities.setVersion("83");
+            capabilities.setPlatform(Platform.WIN10);
+            capabilities.setCapability("screenResolution", "1280x1024");
+
+            try {
+                driver = new RemoteWebDriver(new URL("https://" + SAUCE_USERNAME + ":" + SAUCE_ACCESS_KEY + SAUCE_DC), capabilities);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+        }
         return driver;
     }
 
-    public static void kill() {
-        if (instance != null) {
-            try {
-                instance.quit();
-            } catch (Exception e) {
-                System.out.println("Cannot kill browser");
-            } finally {
-                instance = null;
-            }
-        }
+    public static void closeDriver() {
+        driver.quit();
+        driver = null;
+
     }
 }
