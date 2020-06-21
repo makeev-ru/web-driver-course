@@ -20,7 +20,7 @@ public class WebDriverSingleton {
         if (null == driver) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-            driver.manage().window().maximize();
+//            driver.manage().window().maximize();
 
 //            DesiredCapabilities capabilities = new DesiredCapabilities();
 //            capabilities.setBrowserName("chrome");
