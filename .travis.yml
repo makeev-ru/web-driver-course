@@ -1,5 +1,6 @@
-sudo: required
-dist: trusty
+dist: xenial
+services:
+  - xvfb
 addons:
   chrome: stable
 
