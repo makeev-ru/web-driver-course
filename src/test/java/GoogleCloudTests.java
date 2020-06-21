@@ -1,9 +1,9 @@
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import pages.googleCloud.EmailGeneratorPage;
-import pages.googleCloud.GoogleCloudCalculatorPage;
-import pages.googleCloud.GoogleCloudHomePage;
+import pages.EmailGeneratorPage;
+import pages.GoogleCloudCalculatorPage;
+import pages.GoogleCloudHomePage;
 import utils.WebDriverSingleton;
 
 public class GoogleCloudTests {
@@ -14,7 +14,7 @@ public class GoogleCloudTests {
 
         GoogleCloudCalculatorPage homePage = new GoogleCloudHomePage().
                 open().
-//                clickBannerOKButton(). //no banner using soucelabs env
+                clickBannerOKButton(). //no banner using soucelabs env
                         clickSeeAllProductsButton().
                         clickSeePricingButton().
                         clickCalculatorsButton().

@@ -1,9 +1,8 @@
-package pages.googleCloud;
+package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.AbstractPage;
 import utils.DoublePriceRegexConverter;
 
 import java.util.ArrayList;

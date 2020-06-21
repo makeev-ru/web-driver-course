@@ -1,12 +1,8 @@
 package utils;
 
-import org.openqa.selenium.Platform;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverSingleton {
     private static WebDriver driver;
@@ -22,22 +18,22 @@ public class WebDriverSingleton {
     public static WebDriver getWebDriver() {
 
         if (null == driver) {
-//            WebDriverManager.chromedriver().setup();
-//            driver = new ChromeDriver();
-//            driver.manage().window().maximize();
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
 
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName("chrome");
-            capabilities.setVersion("83");
-            capabilities.setPlatform(Platform.WIN10);
-            capabilities.setCapability("screenResolution", "1280x1024");
-
-            try {
-                driver = new RemoteWebDriver(new URL("https://" + SAUCE_USERNAME + ":" + SAUCE_ACCESS_KEY + SAUCE_DC), capabilities);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-
+//            DesiredCapabilities capabilities = new DesiredCapabilities();
+//            capabilities.setBrowserName("chrome");
+//            capabilities.setVersion("83");
+//            capabilities.setPlatform(Platform.WIN10);
+//            capabilities.setCapability("screenResolution", "1280x1024");
+//
+//            try {
+//                driver = new RemoteWebDriver(new URL("https://" + SAUCE_USERNAME + ":" + SAUCE_ACCESS_KEY + SAUCE_DC), capabilities);
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            }
+//
         }
         return driver;
     }

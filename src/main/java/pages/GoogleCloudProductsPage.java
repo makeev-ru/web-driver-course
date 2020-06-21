@@ -1,8 +1,7 @@
-package pages.googleCloud;
+package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.AbstractPage;
 
 public class GoogleCloudProductsPage extends AbstractPage {
 

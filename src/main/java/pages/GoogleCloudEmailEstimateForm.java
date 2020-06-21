@@ -1,4 +1,4 @@
-package pages.googleCloud;
+package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -18,7 +18,7 @@ public class GoogleCloudEmailEstimateForm extends GoogleCloudCalculatorPage {
         driver.switchTo().frame(driver.findElement(devsiteIframe)).switchTo().frame(myFrame);
 
         waitForElementsClickable(emailInput);
-        emailInput.click();
+//        emailInput.click();
         emailInput.sendKeys(Keys.LEFT_CONTROL + "v");
 
         return new GoogleCloudEmailEstimateForm();

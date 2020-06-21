@@ -1,10 +1,9 @@
-package pages.googleCloud;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.AbstractPage;
 import utils.DoublePriceRegexConverter;
 
 public class GoogleCloudCalculatorPage extends AbstractPage {
@@ -217,6 +216,7 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
         waitForElementsVisible(emailEstimateButton);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", emailEstimateButton);
+        waitForElementsVisible(emailForm);
         return new GoogleCloudEmailEstimateForm();
     }
 
