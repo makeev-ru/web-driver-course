@@ -14,7 +14,7 @@ public class GoogleCloudTests {
 
         GoogleCloudCalculatorPage homePage = new GoogleCloudHomePage().
                 open().
-                clickBannerOKButton(). //no banner using soucelabs env
+//                clickBannerOKButton(). //no banner using soucelabs env
                         clickSeeAllProductsButton().
                         clickSeePricingButton().
                         clickCalculatorsButton().
