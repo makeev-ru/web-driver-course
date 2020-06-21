@@ -9,9 +9,10 @@ jdk: openjdk8
 before_script:
   - export DISPLAY=:99.0
   - sleep 3
-  - xvfb-run --server-args="-screen 0 1024x768x24" make test
 
-script: mvn clean test
+script:
+  - xvfb-run --server-args="-screen 0 1024x768x24" make test
+#  - mvn clean test
 
 
 
