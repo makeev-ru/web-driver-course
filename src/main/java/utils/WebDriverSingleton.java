@@ -23,7 +23,6 @@ public class WebDriverSingleton {
             driver = new ChromeDriver();
             Dimension size = new Dimension(1280, 1024);
             driver.manage().window().setSize(size);
-//            driver.manage().window().maximize();
         }
         return driver;
     }
