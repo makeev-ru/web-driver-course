@@ -14,26 +14,26 @@ public class GoogleCloudTests {
 
         GoogleCloudCalculatorPage homePage = new GoogleCloudHomePage().
                 open().
-//                clickBannerOKButton(). //no banner using soucelabs env
-                        clickSeeAllProductsButton().
-                        clickSeePricingButton().
-                        clickCalculatorsButton().
-                        clickComputeEngineButton().
-                        fillNumberOfInstancesInput(4).
-                        leaveEmptyWhatAreTheseInstancesForInput().
-                        selectFreeDebianOperatingSystem().
-                        selectRegularMachineClass().
-                        selectN1Standard8MachineType().
-                        clickAddGPUsCheckbox().
-                        selectNumberOfGPUs().
-                        selectGPUType().
-                        selectLocalSSDType().
-                        selectDatacenterLocation().
-                        selectCommitedUsage().
-                        clickAddToEstimateButton().
-                        clickEmailEstimateButton().
-                        fillEmailInput(new EmailGeneratorPage().generateEmail()).
-                        clickSendEmailButton();
+//                clickBannerOKButton(). //no banner using headless browser
+                clickSeeAllProductsButton().
+                clickSeePricingButton().
+                clickCalculatorsButton().
+                clickComputeEngineButton().
+                fillNumberOfInstancesInput(4).
+                leaveEmptyWhatAreTheseInstancesForInput().
+                selectFreeDebianOperatingSystem().
+                selectRegularMachineClass().
+                selectN1Standard8MachineType().
+                clickAddGPUsCheckbox().
+                selectNumberOfGPUs().
+                selectGPUType().
+                selectLocalSSDType().
+                selectDatacenterLocation().
+                selectCommitedUsage().
+                clickAddToEstimateButton().
+                clickEmailEstimateButton().
+                fillEmailInput(new EmailGeneratorPage().generateEmail()).
+                clickSendEmailButton();
 
         double priceFromCalculator = homePage.getTotalEstimatedCostFromCalculator();
         double priceFromEmail = emailGeneratorPage.getTotalEstimatedCostFromEmail();

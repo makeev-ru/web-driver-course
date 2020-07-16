@@ -16,25 +16,25 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//md-tab-item/div[@title='Compute Engine']")
     private WebElement computeEngineButton;
 
-    @FindBy(xpath = "//*[@id='input_58']")
+    @FindBy(xpath = "//input[@ng-model = 'listingCtrl.computeServer.quantity']")
     private WebElement numberOfInstancesInput;
 
-    @FindBy(xpath = "//*[@id='input_59']")
+    @FindBy(xpath = "//input[@ng-model = 'listingCtrl.computeServer.label']")
     private WebElement whatAreTheseInstancesForInput;
 
-    @FindBy(xpath = "//*[@id='select_container_71']")
+    @FindBy(xpath = "//*[@ng-model = 'listingCtrl.computeServer.os']/md-select-value")
     private WebElement operatingSystemDropDown;
 
     @FindBy(xpath = "//div[contains(text(), 'Free: Debian')]/ancestor::md-option")
     private WebElement operatingSystemFreeDebianItem; //changed
 
-    @FindBy(xpath = "//*[@id='select_value_label_52']")
+    @FindBy(xpath = "//*[@ng-model = 'listingCtrl.computeServer.class']/md-select-value")
     private WebElement machineClassDropDown;
 
     @FindBy(xpath = "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value='regular']")
     private WebElement machineClassRegularItem; //changed
 
-    @FindBy(xpath = "//*[@id='select_value_label_55']")
+    @FindBy(xpath = "//*[@ng-model = 'listingCtrl.computeServer.instance']/md-select-value")
     private WebElement machineTypeDropDown;
 
     @FindBy(xpath = "//*[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']")
@@ -46,10 +46,10 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//md-select[@placeholder='Number of GPUs']/md-select-value")
     private WebElement numberOfGPUsDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_342']")
+    @FindBy(xpath = "//md-option[@ng-repeat = 'item in listingCtrl.supportedGpuNumbers[listingCtrl.computeServer.gpuType]' and @value=1]")
     private WebElement oneNumberOfGPUsOption;
 
-    @FindBy(xpath = "//*[@id='select_value_label_333']")
+    @FindBy(xpath = "//*[@placeholder='GPU type']/md-select-value")
     private WebElement typeGPUsDropDown;
 
     @FindBy(xpath = "//md-option[@value='NVIDIA_TESLA_V100']")
@@ -61,16 +61,16 @@ public class GoogleCloudCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//div[contains(text(), '2x375 GB')]/ancestor::md-option")
     private WebElement localSSDD2x375Option;
 
-    @FindBy(xpath = "//*[@id='select_value_label_56']")
+    @FindBy(xpath = "//md-select[@placeholder='Datacenter location']/md-select-value[1]")
     private WebElement datacenterLocationDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_181']")
+    @FindBy(xpath = "//md-select-menu[@class='md-overflow']//md-option[@value='europe-west3']")
     private WebElement datacenterLocationFrankfurtOption;
 
-    @FindBy(xpath = "//*[@id='select_value_label_57']")
+    @FindBy(xpath = "//md-select[@placeholder='Committed usage']/md-select-value[1]")
     private WebElement commitedUsageDropDown;
 
-    @FindBy(xpath = "//*[@id='select_option_90']")
+    @FindBy(xpath = "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value=1]")
     private WebElement commitedUsageOneYearOption;
 
     @FindBy(xpath = "//button[@ng-click='cloudCartCtrl.showEmailForm();']")
